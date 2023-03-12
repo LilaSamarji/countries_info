@@ -23,9 +23,9 @@ fetch('https://restcountries.com/v3.1/all')
     //---------------------------------------------------------
     newcard.innerHTML = `
       
-        <div class="card" style="width:18rem;  margin-right: 10px;">
-      <img src="${country.flags.png}" class="card-img-top" style="width:20px;height:20px;">
-      <div class="card-body" style="background-color:#FFDAB9;">
+        <div class="card" style="width:18rem;  margin-right: 10px; margin-bottom:10px; border:2px solid brown; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+      <img src="${country.flags.png}" class="card-img-top" style="width:285px;height:200px;">
+      <div class="card-body" style="background-color:#FFDAB9; height:20rem;">
         <h3 class="card-title" style="color:#800000	 ;font-size:25px; font-weight:bold">${country.name.common}</h3>
         <p><span style="font-weight:bold;color:	#B22222;">Capital</span>    :${country.capital} </p>
         <p> <span style="font-weight:bold;color:#B22222	;">Currencies:</span> ${curr}</p>
@@ -33,7 +33,7 @@ fetch('https://restcountries.com/v3.1/all')
         
         <p><span style="font-weight:bold;color:	#B22222;">Languages</span>  :${languages}</p>
         
-        <a href="#" class="btn btn-primary" id="clickme"  style=" background: linear-gradient(to bottom right, #EF4765, #FF9A5A)";>Exchange to Dollar</a>
+        <a href="https://www.google.com/search?q=${country.name.common}+traditional+food&rlz=1C1BNSD_enLB986LB986&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiN8v2bkNb9AhWDTqQEHQVSCfsQ_AUoAXoECAEQAw&biw=1536&bih=746&dpr=1.25" class="btn btn-primary" id="clickme"  style=" background: linear-gradient(to bottom right, #EF4765, #FF9A5A)";>Traditional Dishes</a>
       </div>
       </div>
      
@@ -43,26 +43,14 @@ fetch('https://restcountries.com/v3.1/all')
     document.getElementById("mainDiv").appendChild(newcard);
 
     //EXCHANGE TO DOLLARS BUTTON -- FUNCTION 
-    document.getElementById("clickme").onclick = function () {
-      var URL = "https://api.fastforex.io/fetch-once?from='+curr+'&to=USD&api_key=7a785b182a-abb4c70d1a-rrd9c1"
-      fetch(URL)
-        .then(response => response.json())
-        .then(currency => {
-          _exchangeRate = response.result.USD;
-          var p = document.createElement('p');
-          p.innerHTML = _exchangeRate;
-          document.getElementById("neww").appendChild(p);
-         
-
-        }
-        )
+    
 
 
 
 
 
 
-    }
+    
 
   })
 
