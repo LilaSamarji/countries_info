@@ -11,19 +11,20 @@ fetch('https://restcountries.com/v3.1/all')
     //STORING THE CURRENCIES OF EACH COUNTRY IN AN ARRAY CURR
     var curr = [];
     if (country.currencies) {
-      Object.keys(country.currencies).forEach(x => { curr = x; })
+      Object.keys(country.currencies).forEach(x => { curr.push(x); })
     }
 
     //STORING THE LANGUAGES OF EACH COUNTRY IN ARRAY LANGUAGES
     if (country.languages) {
       var languages = [];
-      Object.keys(country.languages).forEach(x => { languages = x; })
+      Object.keys(country.languages).forEach(x => { languages.push(x); })
+      
     }
     //---------------------------------------------------------
     newcard.innerHTML = `
       
         <div class="card" style="width:18rem;  margin-right: 10px;">
-      <img src="${country.flags.png}" class="card-img-top" >
+      <img src="${country.flags.png}" class="card-img-top" style="width:20px;height:20px;">
       <div class="card-body" style="background-color:#FFDAB9;">
         <h3 class="card-title" style="color:#800000	 ;font-size:25px; font-weight:bold">${country.name.common}</h3>
         <p><span style="font-weight:bold;color:	#B22222;">Capital</span>    :${country.capital} </p>
